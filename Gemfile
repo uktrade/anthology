@@ -30,5 +30,6 @@ group :test do
   gem "minitest-spec-rails"
   gem "mocha", require: false
   gem "rails-controller-testing"
+  gem "simplecov", require: false
   gem "webmock", require: false
 end
