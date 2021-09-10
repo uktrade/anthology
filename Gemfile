@@ -3,6 +3,7 @@ ruby "2.7.3"
 
 gem "rails", "6.1.4.1"
 
+gem "bootstrap"
 gem "formtastic"
 gem "googlebooks"
 gem "has_scope"
