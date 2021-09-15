@@ -9,41 +9,40 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="bg-light">
+    <header>
+      <nav class="navbar navbar-dark bg-light" aria-label="Main navigation">
+    <div class="container-fluid p-0">
+      <div class="navbar-brand"><%= link_to library_title, root_path %></div>
 
-  <header>
-    <h1><%= link_to library_title, root_path %></h1>
-    <div class="clear"></div>
-    <% if current_user %>
-      <nav class="signed-in">
-        <ul class="routes">
-          <li><%= link_to "all books", books_path %></li>
-          <li><%= link_to "new book", new_book_path %></li>
-        </ul>
+      <% if current_user %>
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "all books", books_path, class: "nav_class" %></li>
+            <li class="nav-item"><%= link_to "new book", new_book_path, class: "nav_class" %></li>
+          </ul>
 
-        <ul class="user">
-          <li>
-            <h1>
-            <%= link_to user_path(current_user) do %>
-              <span class="name"><%= current_user.name %></span> <span class="loan_count">(<%= current_user.copies.count %>)</span>
-            <% end %>
-            </h1>
-          </li>
-          <li><%= link_to "sign out", sign_out_path %></li>
-        </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav_class" do %>
+                <span class="name"><%= current_user.name %></span> <span class="loan_count">(<%= current_user.copies.count %>)</span>
+              <% end %>
+            </li>
+            <li><%= link_to "sign out", sign_out_path %></li>
+          </ul>
 
-        <div class="clear"></div>
-      </nav>
-    <% end %>
-  </header>
-
-  <% flash.each do |id, message| %>
-  <div class="flash flash_<%= id %> wrap">
-    <%= message %>
+          <div class="clear"></div>
+      <% end %>
   </div>
-  <% end %>
+      </nav>
 
-  <%= yield %>
+    </header>
 
+    <% flash.each do |id, message| %>
+    <div class="flash flash_<%= id %> wrap">
+      <%= message %>
+    </div>
+    <% end %>
+
+    <%= yield %>
 </body>
 </html>
