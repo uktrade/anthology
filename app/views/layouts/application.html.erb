@@ -22,11 +22,9 @@
 
         <ul class="user">
           <li>
-            <h1>
             <%= link_to user_path(current_user) do %>
               <span class="name"><%= current_user.name %></span> <span class="loan_count">(<%= current_user.copies.count %>)</span>
             <% end %>
-            </h1>
           </li>
           <li><%= link_to "sign out", sign_out_path %></li>
         </ul>
